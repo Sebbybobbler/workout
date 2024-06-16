@@ -1,4 +1,4 @@
-import  styles from "./App.module.css";
+import styles from "./App.module.css";
 import Exercise from "./components/Exercise";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
             </header>
             <div className={styles.exercisesContainer}>
                 <Exercise name="DB Bench Press" expand={false} />
-                <Exercise name="Back Squat" expand={false}/>
+                <Exercise name="Back Squat" expand={false} />
                 <Exercise name="Military Press" expand={false} />
                 <Exercise name="Military Press" expand={false} />
                 <Exercise name="Military Press" expand={false} />
