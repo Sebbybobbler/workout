@@ -1,67 +1,68 @@
 .exerciseContainer {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-right: 3px solid white;
-    width: 300px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-right: 3px solid white;
+  width: 300px;
 }
 
 .exerciseContainer icon {
-    font-size: 35px;
+  font-size: 35px;
 }
 
 .dropdownFalse {
-    display: none;
+  height: 0;
+  overflow: hidden;
 }
 
 .exerciseGrid {
-    display: grid;
-    position: relative;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 
 .exerciseGrid input {
-    width: 50px;
+  width: 50px;
 }
 
 .weight {
-    grid-column: 1 / 5;
-    grid-row: 1;
+  grid-column: 1 / 5;
+  grid-row: 1;
 }
 
 .reps {
-    grid-column: 3 / 5;
-    grid-row: 1;
+  grid-column: 3 / 5;
+  grid-row: 1;
 }
 
 .sets {
-    grid-column: 5 / 5;
-    grid-row: 1;
+  grid-column: 5 / 5;
+  grid-row: 1;
 }
 
 .weightInput {
-    grid-column: 1 / 5;
-    grid-row: 2/3;
+  grid-column: 1 / 5;
+  grid-row: 2/3;
 }
 
 .repsInput {
-    grid-column: 3 / 5;
-    grid-row: 2/3;
+  grid-column: 3 / 5;
+  grid-row: 2/3;
 }
 
 .setsInput {
-    grid-column: 5 / 5;
-    grid-row: 2/3;
+  grid-column: 5 / 5;
+  grid-row: 2/3;
 }
 
 .submitExercise {
-    grid-column: 1/5;
-    grid-row: 4;
+  grid-column: 1/5;
+  grid-row: 4;
 }
 
 .clearExercise {
-    grid-column: 3/5;
-    grid-row: 4;
+  grid-column: 3/5;
+  grid-row: 4;
 }
