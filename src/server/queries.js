@@ -2,7 +2,7 @@ import express from "express";
 import pool from "../db.js";
 const router = express.Router();
 
-// Get all exercises and info.
+// Get all exercises.
 router.get("/", async (req, res) => {
   try {
     const result = await pool.query("SELECT * from exercises;");
@@ -26,14 +26,13 @@ router.get("/:id", async (req, res) => {
 
 // add a new exercise
 router.post("/", async (req, res) => {
-  const { name, weight, reps, sets } = req.body;
-  let date = new Date();
+  const { name } = req.body;
 
   let result;
   try {
     result = await pool.query(
-      "INSERT INTO exercises (name, weight, reps, sets,date) values ($1,$2,$3,$4,$5) RETURNING *;",
-      [name, weight, reps, sets, date]
+      "INSERT INTO exercises (name) values ($1) RETURNING *;",
+      [name]
     );
     res.status(201).json(result.rows);
   } catch (err) {
@@ -42,14 +41,42 @@ router.post("/", async (req, res) => {
 });
 
 // Delete an exercise
-router.delete("/:id", async (req,res)=>{
-  try{
-    const result = await pool.query("DELETE FROM exercises WHERE id=$1",[req.params.id]);
-    res.status(204).send("Exercise deleted.");
-  }
-  catch(err){
+router.delete("/:id", async (req, res) => {
+  try {
+    const exerciseExist = await pool.query(
+      "SELECT * FROM exercises WHERE id=$1",
+      [req.params.id]
+    );
+    console.log(exerciseExist.rows);
+    if (exerciseExist.rows.length != 0) {
+      await pool.query("DELETE FROM exercises WHERE id=$1", [req.params.id]);
+      res.status(204).send();
+    } else {
+      res.status(404).send();
+    }
+  } catch (err) {
     console.log(`There was an error, could not delete exercise. \n ${err}`);
   }
-})
+});
+
+// Record new exercise
+router.post("/:id", async (req, res) => {
+  let date = new Date();
+  const exerciseId = req.params.id;
+  const { weight, reps, sets } = req.body;
+
+  let result;
+  try {
+    result = await pool.query(
+      "INSERT INTO sessions (exercise_id,weight,reps,sets,date) values ($1,$2,$3,$4,$5) RETURNING *;",
+      [exerciseId, weight, reps, sets, date]
+    );
+    res.status(201).json(result.rows);
+  } catch (err) {
+    console.log(`DB error occurred when fetching exercise:\n${err}`);
+  }
+});
+
+
 
 export default router;
