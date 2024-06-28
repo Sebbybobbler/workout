@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import styles from "./Exercise.module.css";
+import styles from "../../assets/css/Exercise.module.css";
 import { useState } from "react";
 function Exercise({ name, expand }) {
-  const [weightValue, setWeightValue] = useState(null);
-  const [repValue, setRepValue] = useState(null);
-  const [setsValue, setSetsValue] = useState(null);
+  const [weightValue, setWeightValue] = useState("");
+  const [repValue, setRepValue] = useState("");
+  const [setsValue, setSetsValue] = useState("");
   const [isActive, setActive] = useState(expand);
   function handleClick() {
     setActive(!isActive);
@@ -25,6 +25,22 @@ function Exercise({ name, expand }) {
     setWeightValue("");
     setRepValue("");
     setSetsValue("");
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await fetch(`http://localhost:3001/sessions/5`, {
+      method: "POST",
+      body: JSON.stringify({
+        weight: weightValue,
+        reps: repValue,
+        sets: setsValue,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    handleClear();
   }
 
   return (
@@ -70,7 +86,7 @@ function Exercise({ name, expand }) {
             ></input>
           </div>
           <div className={styles.submitExercise}>
-            <button>Add Exercise</button>
+            <button onClick={handleSubmit}>Add Exercise</button>
           </div>
           <div className={styles.clearExercise}>
             <button onClick={handleClear}>Clear</button>
