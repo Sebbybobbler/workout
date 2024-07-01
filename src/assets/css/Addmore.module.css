@@ -1,0 +1,18 @@
+.addmoreContainer{
+    position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-right: 3px solid white;
+    width: 300px;
+}
+
+.addmorePlus{
+    size: 5rem;
+    color:aliceblue
+}
+
+.hidden{
+    display:none;
+}

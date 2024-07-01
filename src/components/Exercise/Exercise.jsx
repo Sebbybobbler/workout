@@ -29,7 +29,7 @@ function Exercise({ name, expand }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await fetch(`http://localhost:3001/sessions/5`, {
+    await fetch(`${process.env.API_URL}/sessions/5`, {
       method: "POST",
       body: JSON.stringify({
         weight: weightValue,

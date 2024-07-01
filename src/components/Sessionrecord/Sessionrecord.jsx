@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 function Sessionrecord() {
-
+    
     const [sessionData,setSessionData] = useState([]);
   useEffect(() => {
     async function getSession() {
-      const response = await fetch(`http://localhost:3001/sessions`, {
+      // eslint-disable-next-line no-undef
+      const response = await fetch(`${process.env.API_URL}/sessions`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
