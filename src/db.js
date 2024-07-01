@@ -11,11 +11,4 @@ const pool = new Pool({
   port: process.env.DB_PORT
 });
 
-
-// DB_NAME="workoutapp"
-// DB_HOST="localhost"
-// DB_PORT=5432
-// DB_USER="postgres"
-// DB_PASSWORD="postgres"
-
 export default pool;
