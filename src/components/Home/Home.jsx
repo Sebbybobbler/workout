@@ -1,5 +1,6 @@
 import styles from "../../assets/css/Home.module.css";
 import Exercise from "../Exercise/Exercise";
+import Addmore from "../Addmore/Addmore.jsx";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         <Exercise name="Zottman Curls" expand={false} />
         <Exercise name="Lat DB Raises" expand={false} />
       </div>
+      <Addmore/>
     </>
   );
 }
