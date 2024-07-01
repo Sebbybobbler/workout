@@ -9,8 +9,8 @@ function Addmore() {
     }
 
   return (
-    <div className={`${styles.addmoreContainer}${`${dropDownVisible ? "" : styles.hidden}`}`}>
-        <div className={styles.addmorePlus} onClick={handleClick}>+</div>
+    <div className={styles.addmoreContainer}>
+        <div className={`${dropDownVisible ? styles.hidden:styles.addmorePlus}`} onClick={handleClick}>+</div>
     </div>
   )
 }
